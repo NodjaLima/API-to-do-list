@@ -1,44 +1,27 @@
 import TarefaModels from "../models/tarefa-models.js";
 import ValidacoesService from "../service/validacoes-service.js";
+import DatabaseMetodos from "../utils/db-metodos.js";
 
 class TarefasController {
   
   static rotas(app){
     app.get('/tarefas', (req, resp) => {
-      const titulo = "Titulo da tarefa";
-      const descricao = "Instanciar a class Tarefa para criar uma nova tarefa";
-      const status = "Fazendo";
-      const data = "20/07/2022";
-
-      const tituloIsValid = ValidacoesService.validaTituloTarefa(titulo);
-      const descricaoIsValid = ValidacoesService.validaDescricaoTarefa(descricao);
-      const statusIsValid = ValidacoesService.validaStatus(status);
-
-      if ((tituloIsValid) &&
-      (descricaoIsValid) &&
-      (statusIsValid)) {
-        const tarefa = new TarefaModels(titulo, descricao, status, data);
-        resp.status(200).json(tarefa)
-      } else {
-        resp.status(400).send('Erro')
-      }
-    })
+      const response = DatabaseMetodos.listarTarefas()
+      resp.status(200).json(response)
+     })
 
     app.post('/tarefas', (req, resp) => {
-      const titulo = "Titulo da tarefa";
-      const descricao = "Instanciar a class Tarefa para criar uma nova tarefa";
-      const status = "Feito";
-      const data = "20/07/2022";
-
-      const tituloIsValid = ValidacoesService.validaTituloTarefa(titulo);
-      const descricaoIsValid = ValidacoesService.validaDescricaoTarefa(descricao);
-      const statusIsValid = ValidacoesService.validaStatus(status);
+   
+      const tituloIsValid = ValidacoesService.validaTituloTarefa(req.body.titulo);
+      const descricaoIsValid = ValidacoesService.validaDescricaoTarefa(req.body.descricao);
+      const statusIsValid = ValidacoesService.validaStatus(req.body.status);
 
       if ((tituloIsValid) &&
       (descricaoIsValid) &&
       (statusIsValid)) {
-        const tarefa = new TarefaModels(titulo, descricao, status, data);
-        resp.status(200).json(tarefa)
+        const tarefa = new TarefaModels(...Object.values(req.body));
+        const response = DatabaseMetodos.inserirTarefa(tarefa)
+        resp.status(200).json(response)
       } else {
         resp.status(400).send('Erro')
       }
