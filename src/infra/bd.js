@@ -1,6 +1,6 @@
 export class Database {
   usuario = [
-    {
+  /*  {
       nome : "Mariana Lima",
       email : "marianalima@meuemail.com",
       senha : "senhadamariana"
@@ -20,8 +20,8 @@ export class Database {
       email : "nodjamoama@meuemail.com",
       senha : "senhadamommydev"
     }
-  ]
-  tarefa = [
+  */]
+  tarefa = [/*
     {
       titulo : "Brincar com o cachorro", 
       descricao: "Levar para correr na praia no final da tarde", 
@@ -41,5 +41,5 @@ export class Database {
       dataDeCriacao : "19/01/2022"
     },
 
-  ]
+  */]
 }
