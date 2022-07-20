@@ -1,9 +1,14 @@
 class UsuariosController {
 
   static rotas(app){
-    app.get('/usuarios', (rep, resp) => {
+    app.get('/usuarios', (req, resp) => {
       resp.send(`Rastreamento da aplicação sendo feito com nodemon`);
-      console.log(`funcionando na porta ${porta}`)
+      
+    })
+
+    app.post('/usuarios', (req, resp) => {
+      resp.send(`Rota POST de usuario ativada: usuário adicionado ao Banco de Dados`);
+      
     })
   }
 }
