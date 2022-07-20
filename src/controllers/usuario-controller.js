@@ -2,7 +2,7 @@ class UsuariosController {
 
   static rotas(app){
     app.get('/usuarios', (rep, resp) => {
-      resp.send(`Rota ativada com GET e recurso Usuários: valores de Usuários devem ser retornados`);
+      resp.send(`Rastreamento da aplicação sendo feito com nodemon`);
       console.log(`funcionando na porta ${porta}`)
     })
   }
