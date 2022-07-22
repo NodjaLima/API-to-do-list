@@ -10,7 +10,7 @@ class TarefasController {
       resp.status(200).json(response)
      })
 
-    app.get('/tarefa/:status', (req, resp) => {
+    app.get('/tarefas/:status', (req, resp) => {
       const response = DatabaseMetodos.listarTarefasPorStatus(req.params.status)
       resp.status(200).json(response)
     })
@@ -31,7 +31,12 @@ class TarefasController {
         resp.status(400).send('Erro')
       }
       
-    });
+    })
+
+    app.delete('/tarefas/:status', (req, resp)=> {
+      const usuario = DatabaseMetodos.deletarTarefaPorStatus(req.params.status)
+      resp.status(200).json(usuario)
+      });
 
   }
 };
