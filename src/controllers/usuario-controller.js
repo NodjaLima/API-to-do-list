@@ -1,6 +1,7 @@
 import UsuarioModels from "../models/usuario-models.js";
 import ValidacoesService from "../service/validacoes-service.js";
 import DatabaseMetodos from "../utils/db-metodos.js";
+import { Database } from "../infra/bd.js"
 
 class UsuariosController {
 
@@ -12,9 +13,9 @@ class UsuariosController {
 
     app.post('/usuarios', (req, resp) => {
       
-      const nomeIsValid = ValidacoesService.validaNome(nome);
-      const emailIsValid = ValidacoesService.validaEmail(email);
-      const senhaIsValid = ValidacoesService.validaSenha(senha);
+      const nomeIsValid = ValidacoesService.validaNome(req.body.nome);
+      const emailIsValid = ValidacoesService.validaEmail(req.body.email);
+      const senhaIsValid = ValidacoesService.validaSenha(req.body.senha);
 
       if ((emailIsValid) &&
       (nomeIsValid) &&
@@ -26,6 +27,12 @@ class UsuariosController {
         resp.status(400).send('Erro')
       }
     })
+
+    app.delete('/usuarios/:nome', (req, resp)=> {
+      const usuario = DatabaseMetodos.deletarUsuarioPorNome(req.params.nome)
+      resp.status(200).json(usuario)
+      });
+
   }
 }
 

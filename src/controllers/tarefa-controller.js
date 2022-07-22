@@ -11,9 +11,9 @@ class TarefasController {
      })
 
     app.get('/tarefa/:status', (req, resp) => {
-      const response = DatabaseMetodos.listarTarefasPorIndex(req.params.status)
+      const response = DatabaseMetodos.listarTarefasPorStatus(req.params.status)
       resp.status(200).json(response)
-  })
+    })
 
     app.post('/tarefas', (req, resp) => {
    

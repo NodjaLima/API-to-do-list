@@ -1,17 +1,32 @@
-const Database = {
+export const Database = {
   Usuarios : [
     {
-      nome: "Mariana Lima",
+      nome: "Mariana",
       email: "marianalima@meuemail.com",
       senha: "senhadamariana"
     },
     {
-      nome : "Miguel Gall",
+      nome : "Miguel",
       email : "miguelgall@meuemail.com",
       senha : "senhadomiguel"
     },
     {
-      nome : "William Boladão",
+      nome : "William",
+      email : "will_sempaciencia@meuemail.com",
+      senha : "senhadowilliam"
+    },
+    {
+      nome: "Arlene",
+      email: "marianalima@meuemail.com",
+      senha: "senhadamariana"
+    },
+    {
+      nome : "Pedro",
+      email : "miguelgall@meuemail.com",
+      senha : "senhadomiguel"
+    },
+    {
+      nome : "Gabriel",
       email : "will_sempaciencia@meuemail.com",
       senha : "senhadowilliam"
     }
@@ -36,7 +51,7 @@ const Database = {
   }]
 };
 
-export default Database
+
 
 
   
