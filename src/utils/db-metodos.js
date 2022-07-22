@@ -23,6 +23,12 @@ static listarTarefas() {
   return Database.Tarefas
 }
 
+static listarTarefasPorIndex(status) {
+  return Database.Tarefas.filter((item) => item.status == status)
+  }
+  
 }
+
+
 
 export default DatabaseMetodos;

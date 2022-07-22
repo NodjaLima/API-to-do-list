@@ -10,6 +10,11 @@ class TarefasController {
       resp.status(200).json(response)
      })
 
+    app.get('/tarefa/:status', (req, resp) => {
+      const response = DatabaseMetodos.listarTarefasPorIndex(req.params.status)
+      resp.status(200).json(response)
+  })
+
     app.post('/tarefas', (req, resp) => {
    
       const tituloIsValid = ValidacoesService.validaTituloTarefa(req.body.titulo);
